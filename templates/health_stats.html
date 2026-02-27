@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FireSight Rescue Interface</title>
+
+    <!-- Local CSS (Flask static paths) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/health_stats.css') }}">
+
+    <!-- External fonts and icons (no change) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="header">
+        <div class="header_item">
+            <!-- Flask image path -->
+            <img src="{{ url_for('static', filename='images/cityu patent comp logo_orange.png') }}" height="40">
+        </div>
+        <div class="header_item">
+            <h1>FireSight Rescue Interface</h1>
+        </div>
+    </div>
+
+    <!-- Flask route links for navigation -->
+    <nav>
+        <a href="{{ url_for('index') }}" class="nav_button">OVERVIEW</a>
+        <a href="{{ url_for('health_stats') }}" class="nav_button selected">HEALTH STATS</a>
+        <a href="{{ url_for('thermal') }}" class="nav_button">THERMAL IMAGING</a>
+        <a href="{{ url_for('slam_map') }}" class="nav_button">LIDAR & SLAM MAP</a>
+    </nav>
+
+    <div class="tab">
+        <div class="heading">
+            <h2>HEALTH MONITORING</h2>
+            <i class="fa-solid fa-heart-pulse"></i>
+        </div>
+
+        <div class="row">
+            <div class="health_card">
+                <p1>156 BPM</p1>
+                <div class="card">
+                    <p>Heart Rate Monitoring (HRM)</p>
+                    <p>RHR - 83 BPM</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="health_chart" id="heartbeat"></div>
+                <p>HRM</p>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="health_card">
+                <p1>100 ms</p1>
+                <div class="card">
+                    <p>Heart Rate Variability (HRV)</p>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="health_card">
+                <p1>156 BPM</p1>
+                <div class="card">
+                    <p>Blood Oxygen Saturation (SpO2)</p>
+                    <p>Ideal Range - 95-100%</p>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <!-- Local JS file via Flask -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+.dcam_displays{
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    text-align: center;
+}
+
+.dcam_displays .card{
+    display:block;
+    background-color: rgb(181, 180, 180);
+    flex:1;
+}
+
+.dcam{
+    min-width:290px;
+    width:100%;
+    min-height: 250px;
+    background-color: white;
+}
+
+.dcam_displays .card p{
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.map{
+    min-width: 905px;
+    height:400px;
+    background-color: white;
+    width: 100%;
+}
+
+.health_card{
+    text-align: center;
+    background-color: white;
+    color:black;
+    margin-bottom: 15px;
+    flex: 1;
+}
+
+.health_card p1{
+    display: block;
+    font-size: 24px;
+    padding: 10px 10px;
+    width: 100%;
+}
+
+.health_card .card{
+    background-color: rgb(181, 180, 180);
+    padding:3px;
+    width: 100%;
+}
+
+.health_card .card p{
+    overflow-wrap:break-word;
+    margin: 5px auto 5px auto;
+    width: 100%;
+}
+
+.column #slam_map{
+    flex: 3;
+    width: auto;
+}
+
+.control_button{
+    padding: 5px 9px;
+    background-color: rgb(255, 179, 143);
+    border-radius: 30px;
+    color: black;
+    border: 3px solid rgb(243, 103, 37);
+    /*border: 5px solid transparent;*/
+    width: fit-content;
+    margin: 0px 5px 15px 0px;
+    font-size: medium;
+    font-family: 'Rubik',sans-serif;
+}
+
+.control_button:hover{
+    background-color: rgb(243, 103, 37);
+    color: white;
+}
+
+
+#control_panel{
+    display: none;
+}
+
+#toggle_icon{
+    transition: transform 0.3s ease;
+    color: rgb(255, 179, 143);
+
+}
+
+.rotate{
+    transform: rotate(-90deg);
+}
+
+.toggle_button:active #toggle_icon,.toggle_button:focus #toggle_icon{
+    color: rgb(255, 179, 143);
+}

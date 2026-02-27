@@ -1,0 +1,49 @@
+body {
+    background-color: #1c1f26;
+    font-family: Arial, sans-serif;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+}
+
+.thermal_cam {
+    min-width: 800px;
+    min-height: 550px;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 3;
+}
+
+.thermal_cam img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.status_alert {
+    width: 250px;
+    height: 200px;
+    background-color: red;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.card p {
+    color: white;
+    font-size: 22px;
+}

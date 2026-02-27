@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FireSight – Thermal Imaging</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/thermal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div id="header">
+    <h1>FireSight Rescue Interface</h1>
+</div>
+
+<nav>
+    <a href="{{ url_for('index') }}" class="nav_button">OVERVIEW</a>
+    <a href="{{ url_for('health_stats') }}" class="nav_button">HEALTH STATS</a>
+    <a href="{{ url_for('thermal') }}" class="nav_button selected">THERMAL IMAGING</a>
+    <a href="{{ url_for('slam_map') }}" class="nav_button">LIDAR & SLAM MAP</a>
+</nav>
+
+<div class="tab">
+
+    <div class="heading">
+        <h2>THERMAL IMAGING</h2>
+    </div>
+
+    <div class="row">
+
+        <!-- ✅ WHITE CAMERA BOX -->
+        <div class="thermal_cam">
+            <img src="{{ url_for('video_feed') }}">
+        </div>
+
+        <!-- ✅ STATUS CARD -->
+        <div class="card">
+            <div class="status_alert" id="statusBox"></div>
+            <p id="statusText">Checking...</p>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+function checkStatus() {
+    fetch("/detection_status")
+        .then(response => response.json())
+        .then(data => {
+            const box = document.getElementById("statusBox");
+            const text = document.getElementById("statusText");
+
+            if (data.person === 1) {
+                box.style.backgroundColor = "green";
+                text.innerText = "Person Detected";
+            } else {
+                box.style.backgroundColor = "red";
+                text.innerText = "No Person Detected";
+            }
+        });
+}
+
+setInterval(checkStatus, 1000);
+</script>
+
+</body>
+</html>

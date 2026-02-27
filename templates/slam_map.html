@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FireSight Rescue Interface</title>
+
+    <!-- Local CSS files via Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slam_map.css') }}">
+
+    <!-- External resources (unchanged) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="header">
+        <div class="header_item">
+            <!-- Flask path for static image -->
+            <img src="{{ url_for('static', filename='images/cityu patent comp logo_orange.png') }}" height="40">
+        </div>
+        <div class="header_item">
+            <h1>FireSight Rescue Interface</h1>
+        </div>
+    </div>
+
+    <!-- Navigation using Flask routes -->
+    <nav>
+        <a href="{{ url_for('index') }}" class="nav_button">OVERVIEW</a>
+        <a href="{{ url_for('health_stats') }}" class="nav_button">HEALTH STATS</a>
+        <a href="{{ url_for('thermal') }}" class="nav_button">THERMAL IMAGING</a>
+        <a href="{{ url_for('slam_map') }}" class="nav_button selected">LIDAR & SLAM MAP</a>
+    </nav>
+
+    <div class="tab">
+        <div class="heading">
+            <h2>LIDAR & SLAM MAPPING</h2>
+            <i class="fa-solid fa-layer-group"></i>
+        </div>
+
+        <!-- Control panel buttons -->
+        <div class="row">
+            <button type="button" class="control_button" id="interact">
+                <i class="fa-solid fa-hand-pointer"></i> Interact
+            </button>
+            <button type="button" class="control_button" id="move_camera">
+                <i class="fa-solid fa-arrows-up-down-left-right"></i> Move Camera
+            </button>
+            <button type="button" class="control_button" id="select">
+                <i class="fa-regular fa-object-ungroup"></i> Select
+            </button>
+            <button type="button" class="control_button" id="measure">
+                <i class="fa-solid fa-ruler"></i> Measure
+            </button>
+            <button type="button" class="control_button" id="focus_camera">
+                <i class="fa-solid fa-crosshairs"></i> Focus Camera
+            </button>
+            <button type="button" class="control_button" id="2d_point_estimate">
+                <i class="fa-regular fa-circle-dot"></i> 2D Point Estimate
+            </button>
+            <button type="button" class="control_button" id="2d_goal_pose">
+                <i class="fa-regular fa-circle-dot"></i> 2D Goal Pose
+            </button>
+            <button type="button" class="control_button" id="publish_point">
+                <i class="fa-solid fa-location-dot"></i> Publish Point
+            </button>
+            <button type="button" class="control_button" id="plus">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+            <button type="button" class="control_button" id="minus">
+                <i class="fa-solid fa-minus"></i>
+            </button>
+        </div>
+
+        <div class="map"></div>
+    </div>
+
+    <!-- Local JS file via Flask -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

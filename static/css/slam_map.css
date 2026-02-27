@@ -1,0 +1,26 @@
+.control_button{
+    padding: 5px 9px;
+    background-color: rgb(255, 179, 143);
+    border-radius: 30px;
+    color: black;
+    border: 3px solid rgb(243, 103, 37);
+    /*border: 5px solid transparent;*/
+    width: fit-content;
+    margin: 0px 5px 15px 0px;
+    font-size: medium;
+    font-family: 'Rubik',sans-serif;
+}
+
+.control_button:hover{
+    background-color: rgb(243, 103, 37);
+    color: white;
+}
+
+
+
+.map{
+    min-height: 600px;
+    flex:1;
+    background-color: white;
+    min-width: fit-content;
+}

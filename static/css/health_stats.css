@@ -1,0 +1,39 @@
+.health_card{
+    text-align: center;
+    background-color: white;
+    color:black;
+    margin-bottom: 15px;
+    flex: 1;
+}
+
+.health_card p1{
+    display: block;
+    font-size: 24px;
+    padding: 10px;
+}
+
+.health_card .card{
+    background-color: rgb(181, 180, 180);
+    padding:3px;
+}
+
+.health_card .card p{
+    line-height: 10px;
+    margin: 10px;
+}
+
+.card{
+    background-color: white;
+}
+
+.row{
+    display: flex;
+    gap:20px;
+}
+
+.health_chart #heartbeat{
+    flex:4;
+    height: 400px;
+    background-color: white;
+    width: 400px;
+}
