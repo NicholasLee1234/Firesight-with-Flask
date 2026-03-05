@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FireSight – Thermal Imaging</title>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/thermal.css') }}">
+    <title>FireSight – Dual Thermal Cameras</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -21,35 +19,42 @@
 </nav>
 
 <div class="tab">
-
     <div class="heading">
-        <h2>THERMAL IMAGING</h2>
+        <h2>THERMAL IMAGING (Dual Cameras)</h2>
     </div>
 
     <div class="row">
 
-        <!-- ✅ WHITE CAMERA BOX -->
+        <!-- CAMERA 1 -->
         <div class="thermal_cam">
-            <img src="{{ url_for('video_feed') }}">
+            <h3>Camera 0 Feed</h3>
+            <img src="{{ url_for('video_feed_cam0') }}" width="480" height="360">
+            <div class="card">
+                <div class="status_alert" id="statusBox0"></div>
+                <p id="statusText0">Checking...</p>
+            </div>
         </div>
 
-        <!-- ✅ STATUS CARD -->
-        <div class="card">
-            <div class="status_alert" id="statusBox"></div>
-            <p id="statusText">Checking...</p>
+        <!-- CAMERA 1 -->
+        <div class="thermal_cam">
+            <h3>Camera 1 Feed</h3>
+            <img src="{{ url_for('video_feed_cam1') }}" width="480" height="360">
+            <div class="card">
+                <div class="status_alert" id="statusBox1"></div>
+                <p id="statusText1">Checking...</p>
+            </div>
         </div>
 
     </div>
 </div>
 
-
 <script>
-function checkStatus() {
-    fetch("/detection_status")
+function checkStatus(cam, url) {
+    fetch(url)
         .then(response => response.json())
         .then(data => {
-            const box = document.getElementById("statusBox");
-            const text = document.getElementById("statusText");
+            const box = document.getElementById(`statusBox${cam}`);
+            const text = document.getElementById(`statusText${cam}`);
 
             if (data.person === 1) {
                 box.style.backgroundColor = "green";
@@ -61,7 +66,11 @@ function checkStatus() {
         });
 }
 
-setInterval(checkStatus, 1000);
+// Update both every 1s
+setInterval(() => {
+    checkStatus(0, "/detection_status_cam0");
+    checkStatus(1, "/detection_status_cam1");
+}, 1000);
 </script>
 
 </body>
